@@ -1,0 +1,261 @@
+
+
+
+mysql> crate database gestion_universiaria;
+
+mysql> use gestion_universitaria;
+Database changed
+
+mysql> create table Estudiantes(
+    ->      Nombre varchar(30) not null,
+    ->      Apellido varchar(30) not null,
+    ->      Matricula int(7) not null AUTO_INCREMENT,
+    ->      Carrera varchar(40) not null,
+    ->      Telefon varchar(12) not null,
+    ->      Indice float,
+    ->      Direccion varchar(50),
+    ->      Correo varchar(65) not null,
+    ->     primary key (Matricula),
+    ->     user varchar(30),
+    ->     Clave varchar (9) not null);
+Query OK, 0 rows affected, 1 warning (0.46 sec)
+
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_gestion_universitaria |
++---------------------------------+
+| estudiantes                     |
++---------------------------------+
+1 row in set (0.10 sec)
+
+
+mysql> create table Docentes(Nombre varchar(30) not null,
+    -> Apellido varchar(30) not null,
+    -> Id_Maestro varchar (12) not null,
+    -> Clave varchar(23) not null,
+    -> Materias varchar(40),
+    ->  primary key (Id_Maestro));
+Query OK, 0 rows affected (0.43 sec)
+
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_gestion_universitaria |
++---------------------------------+
+| docentes                        |
+| estudiantes                     |
++---------------------------------+
+2 rows in set (0.00 sec)
+
+
+
+mysql> create table Materias(
+     Nombre varchar(30) not null,
+     codigo varchar (8) not null,
+     creditos int (1) not null,
+     Horarios varchar(35) not null,
+     primary key (codigo));
+Query OK, 0 rows affected, 1 warning (0.33 sec)
+
+mysql> describe materias;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Nombre   | varchar(30) | NO   |     | NULL    |       |
+| codigo   | varchar(8)  | NO   | PRI | NULL    |       |
+| creditos | int         | NO   |     | NULL    |       |
+| Horarios | varchar(35) | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.07 sec)
+mysql> create table Carreras( Nombre varchar(30) not null, codigo varchar(8) not null, no_materias int not null,  primary key (codigo));
+Query OK, 0 rows affected (0.39 sec)
+
+mysql> describe carreras;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Nombre      | varchar(30) | NO   |     | NULL    |       |
+| codigo      | varchar(8)  | NO   | PRI | NULL    |       |
+| no_materias | int         | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.12 sec)
+
+mysql> describe estudiantes;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| Nombre    | varchar(30) | NO   |     | NULL    |                |
+| Apellido  | varchar(30) | NO   |     | NULL    |                |
+| Matricula | int         | NO   | PRI | NULL    | auto_increment |
+| Carrera   | varchar(40) | NO   |     | NULL    |                |
+| Telefon   | varchar(12) | NO   |     | NULL    |                |
+| Indice    | float       | YES  |     | NULL    |                |
+| Direccion | varchar(50) | YES  |     | NULL    |                |
+| Correo    | varchar(65) | NO   |     | NULL    |                |
+| user      | varchar(30) | YES  |     | NULL    |                |
+| Clave     | varchar(9)  | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+10 rows in set (0.14 sec)
+
+
+mysql> INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave) VALUES('Jose','Almanzar', 20003, 'Ingenieria en sistemas', '829-988-2334', '3.96','Calle Jose Ernesto #122', 'Jose1232@gmail.com', 'JA20003' , 'Mariayjose');
+
+INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave) VALUES('Carlos','Lopez', 20004, 'Arquitectura', '829-888-2683', '3.67','Calle Mariposa #65', 'Carlitos01@gmail.com','CL20004', 'Carlitos123');
+
+INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave)VALUES('Katherine','Suarez', 20007, 'Ingenieria Quimica', '829-228-4657', '3.90','Reparto Rosa #45', ' SuarKat@gmail.com',' KS20007' ,'Kath0929');
+
+INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave)VALUES('Roberto','Lopez', 20087, 'Ingenieria en Sistemas', '809-468-6657', '3.90',' Res. Los Flamencos #34', ' RobertoLopez123@gmail.com','RL20087', '12eet');
+
+INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave)VALUES('Fernanda','Jimenez', 20083, 'Ingenieria Industrial', '829-422-6657', '3.70','Calle Naranja #22', ' Jimenezfer3@gmail.com', 'FJ0083', 'jime0');
+
+INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave)VALUES('Susana','Santos', 2334, 'Medicina General', '809-468-6647', '2.90',' Res. Jose Contreras #44', ' susanita@gmail.com', 'SS2334', 'Medlove');
+
+INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave)VALUES('Gustavo','Blanco', 20090, 'Ingenieria en Sistemas', '809-358-6567', '3.60',' Calle california #34', ' GustB@gmail.com','GB20090', 'gustavi');
+
+INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave)VALUES('Daniela','Baez', 20035, 'Ingenieria Civil', '829-668-8807', '3.90',' Res. Los Flamencos #65', ' Dani3@gmail.com', 'DB20036', 'BADdani');
+
+
+INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave)VALUES('Daniel','Vasquez', 20045, 'Ingenieria Geomatica', '809-448-8807', '3.40',' Res. Los Olivos #65', ' Dani3lVZ@gmail.com', 'DV20045', 'Vasquzyu');
+INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave)VALUES('Rodrigo','Gomez', 2035, 'Ingenieria Civil', '849-698-8807', '3.90',' Calle Olimpo #87', ' Rodrih@gmail.com', 'RG2035', 'Rodrt');
+INSERT INTO estudiantes(Nombre, Apellido, Matricula, Carrera, Telefon, Indice, Direccion, Correo, user, Clave)VALUES('Karla','Cuello', 20225, 'Ingenieria en  Sistemas', '809-653-6807', '4.00',' Res. Los Flamencos #60', ' KarlaCuell03@gmail.com', 'KC20225', 'holasoykarl');
+
+
+mysql> SELECT * FROM estudiantes;
++-----------+----------+-----------+------------------------+--------------+--------+--------------------------+----------------------------+----------+----------+
+| Nombre    | Apellido | Matricula | Carrera                | Telefon      | Indice | Direccion                | Correo                     | user     | Clave    |
++-----------+----------+-----------+------------------------+--------------+--------+--------------------------+----------------------------+----------+----------+
+| Rodrigo   | Gomez    |      2035 | Ingenieria Civil       | 849-698-8807 |    3.9 |  Calle Olimpo #87        |  Rodrih@gmail.com          | RG2035   | Rodrt    |
+| Susana    | Santos   |      2334 | Medicina General       | 809-468-6647 |    2.9 |  Res. Jose Contreras #44 |  susanita@gmail.com        | SS2334   | Medlove  |
+| Jose      | Almanzar |     20003 | Ingenieria en sistemas | 829-988-2334 |   3.96 | Calle Jose Ernesto #122  | Jose1232@gmail.com         | JA20003  | Marijose |
+| Carlos    | Lopez    |     20004 | Arquitectura           | 829-888-2683 |   3.67 | Calle Mariposa #65       | Carlitos01@gmail.com       | CL20004  | Carli    |
+| Katherine | Suarez   |     20007 | Ingenieria Quimica     | 829-228-4657 |    3.9 | Reparto Rosa #45         |  SuarKat@gmail.com         |  KS20007 | Kath0929 |
+| Daniela   | Baez     |     20035 | Ingenieria Civil       | 829-668-8807 |    3.9 |  Res. Los Flamencos #65  |  Dani3@gmail.com           | DB20036  | BADdani  |
+| Daniel    | Vasquez  |     20045 | Ingenieria Geomatica   | 809-448-8807 |    3.4 |  Res. Los Olivos #65     |  Dani3lVZ@gmail.com        | DV20045  | Vasquzyu |
+| Fernanda  | Jimenez  |     20083 | Ingenieria Industrial  | 829-422-6657 |    3.7 | Calle Naranja #22        |  Jimenezfer3@gmail.com     | FJ0083   | jime0    |
+| Roberto   | Lopez    |     20087 | Ingenieria en Sistemas | 809-468-6657 |    3.9 |  Res. Los Flamencos #34  |  RobertoLopez123@gmail.com | RL20087  | 12eet    |
+| Gustavo   | Blanco   |     20090 | Ingenieria en Sistemas | 809-358-6567 |    3.6 |  Calle california #34    |  GustB@gmail.com           | GB20090  | gustavi  |
++-----------+----------+-----------+------------------------+--------------+--------+--------------------------+----------------------------+----------+----------+
+10 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+INSERT INTO Docentes ( Nombre, Apellido, Id_Maestro, Clave, Materias) VALUES('Juan', 'Blanco', '12JB','JuancitoB12', 'LEX01, SOC09, LEX02-01');
+
+INSERT INTO Docentes ( Nombre, Apellido, Id_Maestro, Clave, Materias) VALUES('Maritza', 'Bisono', '32MB','Maritza9012', 'MAT09, FIS07, INF02-01');
+
+INSERT INTO Docentes ( Nombre, Apellido, Id_Maestro, Clave, Materias) VALUES('Carlos', 'Amado', '54CA','AmadoB90', 'LEX02, ADM98');
+
+INSERT INTO Docentes ( Nombre, Apellido, Id_Maestro, Clave, Materias) VALUES('Yeison', 'Sanchez', '84YS','Señorex', 'FIS09, INF09, FIS01');
+
+INSERT INTO Docentes ( Nombre, Apellido, Id_Maestro, Clave, Materias) VALUES('Grabiel', 'Olivo', '14GO','GOTOVACATION', 'INF01, INF02-01');
+
+INSERT INTO Docentes ( Nombre, Apellido, Id_Maestro, Clave, Materias) VALUES('Alicia', 'Mendez', '10AM','OKIDOKI', 'QUI09, ING09, INF2-01');
+
+
+
+INSERT INTO Docentes ( Nombre, Apellido, Id_Maestro, Clave, Materias) VALUES('Fernanda', 'Bisono', '02FB','Candy2', 'MAT00, FIS07');
+
+INSERT INTO Docentes ( Nombre, Apellido, Id_Maestro, Clave, Materias) VALUES( 'Mercedes', 'De la Cruz', '04MC','PIKY', 'LEX02, ADM98');
+
+mysql> select*From Docentes;
++----------+------------+------------+--------------+------------------------+
+| Nombre   | Apellido   | Id_Maestro | Clave        | Materias               |
++----------+------------+------------+--------------+------------------------+
+| Fernanda | Bisono     | 02FB       | Candy2       | MAT00, FIS07           |
+| Mercedes | De la Cruz | 04MC       | PIKY         | LEX02, ADM98           |
+| Rosa     | Tavarez    | 08RT       | okurex       | SOC09                  |
+| Yail     | Sanchez    | 08YS       | Tirex        | FIS09                  |
+| Alicia   | Mendez     | 10AM       | OKIDOKI      | QUI09, ING09, INF2-01  |
+| Juan     | Blanco     | 12JB       | JuancitoB12  | LEX01, SOC09, LEX02-01 |
+| Grabiel  | Olivo      | 14GO       | GOTOVACATION | INF01, INF02-01        |
+| Maritza  | Bisono     | 32MB       | Maritza9012  | MAT09, FIS07, INF02-01 |
+| Carlos   | Amado      | 54CA       | AmadoB90     | LEX02, ADM98           |
+| Yeison   | Sanchez    | 84YS       | Señorex      | FIS09, INF09, FIS01    |
++----------+------------+------------+--------------+------------------------+
+10 rows in set (0.00 sec)
+
+mysql> Describe docentes;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Nombre     | varchar(30) | NO   |     | NULL    |       |
+| Apellido   | varchar(30) | NO   |     | NULL    |       |
+| Id_Maestro | varchar(12) | NO   | PRI | NULL    |       |
+| Clave      | varchar(23) | NO   |     | NULL    |       |
+| Materias   | varchar(40) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.13 sec)
+
+
+
+mysql> INSERT INTO carreras (Nombre, Codigo, no_materias) Values ( 'Ingenieria Industrial' , 'IngIND', ' 71');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO carreras (Nombre, Codigo, no_materias) Values ( 'Arquitectura' , 'AQUIT', ' 72');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO carreras (Nombre, Codigo, no_materias) Values ( 'Ingenieria Civil' , 'IngCIV', ' 79');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> INSERT INTO carreras (Nombre, Codigo, no_materias) Values ( 'Medicina General' , 'MED', ' 108');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO carreras (Nombre, Codigo, no_materias) Values ( 'Ingenieria Geomatica' , 'IngGEO', ' 71');
+Query OK, 1 row affected (0.11 sec)
+
+
+mysql> Select * From carreras;
++------------------------+--------+-------------+
+| Nombre                 | codigo | no_materias |
++------------------------+--------+-------------+
+| Arquitectura           | AQUIT  |          72 |
+| Ingenieria Civil       | IngCIV |          79 |
+| Ingenieria Geomatica   | IngGEO |          71 |
+| Ingenieria Industrial  | IngIND |          71 |
+| Ingenieria en Sistemas | IngSIS |          70 |
+| Medicina General       | MED    |         108 |
++------------------------+--------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> INSERT INTO Materias(Nombre, Codigo, Creditos, Horarios) VALUES ('Matematica1', 'MAT00', '4', '  Lun 10:00- 12:00');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> INSERT INTO Materias(Nombre, Codigo, Creditos, Horarios) VALUES ('Calculo', 'MAT09', '3', '  Martes 11:00- 14:00');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> INSERT INTO Materias(Nombre, Codigo, Creditos, Horarios) VALUES ('Español1', 'LEX01', '2', '  Lun 20:00- 22:00');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO Materias(Nombre, Codigo, Creditos, Horarios) VALUES ('Sociologia', 'SOC09', '1', ' Jueves 7:00- 8:00');
+Query OK, 1 row affected (0.19 sec)
+
+mysql> INSERT INTO Materias(Nombre, Codigo, Creditos, Horarios) VALUES ('Geometria Descriptiva', 'ING09', '5', '  Miercoles 10:00- 13:00');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> INSERT INTO Materias(Nombre, Codigo, Creditos, Horarios) VALUES ('Introduccion a Infomatica', 'INF01', '2', '  Viernes 18:00 - 20:00');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> INSERT INTO Materias(Nombre, Codigo, Creditos, Horarios) VALUES ('Quimica', 'QUI09', '3', '  Martes 13:00- 15:00');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> INSERT INTO Materias(Nombre, Codigo, Creditos, Horarios) VALUES ('Administracion ', 'ADM98', '4', '  Lun 10:00- 12:00');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> INSERT INTO Materias(Nombre, Codigo, Creditos, Horarios) VALUES ('Tecnicas de programacion', 'INF02-01', '5', '  Martes-Miercoles 10:00- 12:00');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> INSERT INTO Materias(Nombre, Codigo, Creditos, Horarios) VALUES ('Espanol 2', 'LEX02-01', '3', '  Lun 10:00- 12:00');
+Query OK, 1 row affected (0.07 sec)
+
+
+
+
+
